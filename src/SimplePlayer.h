@@ -22,8 +22,8 @@ class SimplePlayer : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit SimplePlayer(QWidget *parent = 0);
-    ~SimplePlayer();
+    explicit SimplePlayer(QWidget *parent = nullptr);
+    ~SimplePlayer() override;
 
 private slots:
     void openLocal();

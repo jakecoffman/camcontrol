@@ -19,7 +19,7 @@
 SimplePlayer::SimplePlayer(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::SimplePlayer),
-      _media(0),
+      _media(nullptr),
       _equalizerDialog(new EqualizerDialog(this))
 {
     ui->setupUi(this);

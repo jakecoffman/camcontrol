@@ -11,7 +11,7 @@
 
 EqualizerDialog::EqualizerDialog(QWidget *parent)
     : QDialog(parent),
-      _mediaPlayer(0)
+      _mediaPlayer(nullptr)
 {
     this->setupUi(this);
 
@@ -29,7 +29,7 @@ EqualizerDialog::EqualizerDialog(QWidget *parent)
 
     // Set sliders value with unit
     for (QSlider *slider : findChildren<QSlider*>()) {
-        QLabel *valueLabel = findChild<QLabel*>(slider->objectName() + "Label");
+        auto *valueLabel = findChild<QLabel*>(slider->objectName() + "Label");
         connect(slider, &QSlider::valueChanged, this, [=](int value) {
             valueLabel->setText(QString::number(value) + " dB");
         });
@@ -60,21 +60,21 @@ void EqualizerDialog::setMediaPlayer(VlcMediaPlayer *mediaPlayer)
 
 void EqualizerDialog::applyChangesForBand(int value)
 {
-    int bandIndex = _mapSliders.value(static_cast<QSlider*>(sender()));
-    _mediaPlayer->equalizer()->setAmplificationForBandAt((float)value, bandIndex);
+    int bandIndex = _mapSliders.value(dynamic_cast<QSlider*>(sender()));
+    _mediaPlayer->equalizer()->setAmplificationForBandAt((float)value, (uint)bandIndex);
 }
 
 void EqualizerDialog::applySelectedPreset()
 {
     auto equalizer = _mediaPlayer->equalizer();
 
-    disconnect(preamp, 0, equalizer, 0);
+    disconnect(preamp, nullptr, equalizer, nullptr);
     for (QSlider *slider : findChildren<QSlider*>()) {
         if (slider == preamp) {
-            slider->setValue(equalizer->preamplification());
+            slider->setValue((uint)equalizer->preamplification());
         } else {
             disconnect(slider, &QSlider::valueChanged, this, &EqualizerDialog::applyChangesForBand);
-            slider->setValue(equalizer->amplificationForBandAt(_mapSliders.value(slider)));
+            slider->setValue((uint)equalizer->amplificationForBandAt((uint)_mapSliders.value(slider)));
             connect(slider, &QSlider::valueChanged, this, &EqualizerDialog::applyChangesForBand);
         }
     }

@@ -16,7 +16,7 @@ class EqualizerDialog : public QDialog, Ui::EqualizerDialog
 {
     Q_OBJECT
 public:
-    explicit EqualizerDialog(QWidget *parent = 0);
+    explicit EqualizerDialog(QWidget *parent = nullptr);
 
     void setMediaPlayer(VlcMediaPlayer *mediaPlayer);
 
