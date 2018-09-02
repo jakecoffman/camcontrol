@@ -1,0 +1,7 @@
+build
+dependencies
+install
+build*
+CMakeLists.txt.user
+simple-player.pro.user
+cmake-*
