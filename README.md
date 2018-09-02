@@ -1,44 +1,13 @@
-# VLC-Qt Simple Player Example
+# camcontrol
 
-A simple VLC-Qt powered media player with support for:
-  - Video playback
-  - Volume slider
-  - Progress bar
-  - Equalizer
+More info coming soon.
 
-This example is compatible with:
-  - CMake and qmake
-  - Qt5
-  - latest VLC-Qt with VLC 2.2 or later
+This project was forked from: https://github.com/vlc-qt/examples/tree/master/simple-player
 
-## TODO
-  - qmake install
+(Commit fb69be54dd9e7ebedf56799b06e0f2a8153276be)
 
-## Build system selection
-If you want to use CMake, you can delete
-  - simple-player.pro
-  - src/src.pro
+Quick tips on getting it to build: 
 
-If you want to use qmake, you can delete
-  - CMakeLists.txt
-  - cmake/*
-  - src/CMakeLists.txt
-
-
-## Platform specific notes
-
-### Windows
-
-You can install all required libraries with (CMake only)
-```
-make install
-make windows
-```
-
-### OS X
-
-Create package using (CMake only)
-```
-make install
-make dmg
-```
+- Install qt to `/usr/local/opt/qt5` and set `CMAKE_PREFIX_PATH` to that
+- Download VLC-Qt `$somewhere` and set VLCQt_DIR to `$somewhere/lib/cmake/VLCQt`
+- Also set VLCQtCore_DIR to `$somewhere/lib/cmake/VLCQtCore`
