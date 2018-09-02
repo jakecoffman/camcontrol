@@ -40,9 +40,7 @@ SimplePlayer::SimplePlayer(QWidget *parent)
     connect(ui->actionStop, &QAction::triggered, _player, &VlcMediaPlayer::stop);
     connect(ui->openLocal, &QPushButton::clicked, this, &SimplePlayer::openLocal);
     connect(ui->openUrl, &QPushButton::clicked, this, &SimplePlayer::openUrl);
-    connect(ui->pause, &QPushButton::toggled, ui->actionPause, &QAction::toggle);
     connect(ui->stop, &QPushButton::clicked, _player, &VlcMediaPlayer::stop);
-    connect(ui->equalizer, &QPushButton::clicked, _equalizerDialog, &EqualizerDialog::show);
 }
 
 SimplePlayer::~SimplePlayer()
@@ -71,7 +69,7 @@ void SimplePlayer::openLocal()
 void SimplePlayer::openUrl()
 {
     QString url =
-            QInputDialog::getText(this, tr("Open Url"), tr("Enter the URL you want to play"));
+            QInputDialog::getText(this, tr("Open Url"), tr("Enter the URL you want to play"), QLineEdit::Normal, "rtsp://192.168.1.120");
 
     if (url.isEmpty())
         return;
