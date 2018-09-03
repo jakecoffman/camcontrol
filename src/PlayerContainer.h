@@ -19,6 +19,12 @@ public:
 //private slots:
 //    void openLocal();
 //    void openUrl();
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
+private:
+    void writeSettings();
+    void readSettings();
 
 private:
     Ui::PlayerContainer *ui;

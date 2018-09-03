@@ -5,6 +5,9 @@
 
 #include <QFileDialog>
 #include <QInputDialog>
+#include <QCloseEvent>
+#include <QSettings>
+#include <QtDebug>
 
 #include <VLCQtCore/Common.h>
 #include <VLCQtCore/Instance.h>
@@ -18,6 +21,8 @@
 
 SimplePlayer::SimplePlayer(QWidget *parent)
     : QWidget(parent),
+      _volume(0),
+      _url(""),
       ui(new Ui::SimplePlayer),
       _media(nullptr),
       _equalizerDialog(new EqualizerDialog(this))
@@ -31,7 +36,7 @@ SimplePlayer::SimplePlayer(QWidget *parent)
 
     ui->video->setMediaPlayer(_player);
     ui->volume->setMediaPlayer(_player);
-    ui->volume->setVolume(50);
+    ui->volume->setVolume(_volume);
     ui->seek->setMediaPlayer(_player);
 
     connect(ui->actionOpenLocal, &QAction::triggered, this, &SimplePlayer::openLocal);
@@ -41,6 +46,13 @@ SimplePlayer::SimplePlayer(QWidget *parent)
     connect(ui->openLocal, &QPushButton::clicked, this, &SimplePlayer::openLocal);
     connect(ui->openUrl, &QPushButton::clicked, this, &SimplePlayer::openUrl);
     connect(ui->stop, &QPushButton::clicked, _player, &VlcMediaPlayer::stop);
+
+    if (_url.isEmpty()) {
+        return;
+    }
+
+    _media = new VlcMedia(_url, _instance);
+    _player->open(_media);
 }
 
 SimplePlayer::~SimplePlayer()
@@ -68,13 +80,21 @@ void SimplePlayer::openLocal()
 
 void SimplePlayer::openUrl()
 {
-    QString url =
-            QInputDialog::getText(this, tr("Open Url"), tr("Enter the URL you want to play"), QLineEdit::Normal, "rtsp://192.168.1.120");
+    QString url = QInputDialog::getText(this, tr("Open Url"), tr("Enter the URL you want to play"), QLineEdit::Normal, _url);
 
     if (url.isEmpty())
         return;
-
+    _url = url;
     _media = new VlcMedia(url, _instance);
 
+    _player->open(_media);
+}
+
+void SimplePlayer::setUrl(QString s) {
+    _url = std::move(s);
+    if (_url.isEmpty()) {
+        return;
+    }
+    _media = new VlcMedia(_url, _instance);
     _player->open(_media);
 }
