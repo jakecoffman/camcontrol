@@ -17,7 +17,7 @@
 #include "ui_SimplePlayer.h"
 
 SimplePlayer::SimplePlayer(QWidget *parent)
-    : QMainWindow(parent),
+    : QWidget(parent),
       ui(new Ui::SimplePlayer),
       _media(nullptr),
       _equalizerDialog(new EqualizerDialog(this))

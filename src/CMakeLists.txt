@@ -8,15 +8,16 @@
 SET(Project_UIs
     EqualizerDialog.ui
     SimplePlayer.ui
+    PlayerContainer.ui
 )
 
 # Define the C++ source files
 SET(Project_Srcs
     main.cpp
+    PlayerContainer.cpp
     EqualizerDialog.cpp
     SimplePlayer.cpp
 )
-
 
 #
 # Compiler settings
@@ -54,7 +55,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         COMMAND ${ICONUTIL_EXECUTABLE} --convert icns --output ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.app/Contents/Resources/${PROJECT_NAME}.icns
         ${Project_Iconset}
     )
-    SET(Project_Srcs ${Project_Srcs} ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.app/Contents/Resources/${PROJECT_NAME}.icns)
+    SET(Project_Srcs ${Project_Srcs} ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.app/Contents/Resources/${PROJECT_NAME}.icns PlayerContainer.h PlayerContainer.cpp)
 ENDIF()
 
 # This line tells cmake to create the Project program.

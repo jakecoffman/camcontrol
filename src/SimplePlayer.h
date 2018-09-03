@@ -6,7 +6,7 @@
 #ifndef SIMPLEPLAYER_H_
 #define SIMPLEPLAYER_H_
 
-#include <QMainWindow>
+#include <QWidget>
 
 namespace Ui {
     class SimplePlayer;
@@ -18,7 +18,7 @@ class VlcMediaPlayer;
 
 class EqualizerDialog;
 
-class SimplePlayer : public QMainWindow
+class SimplePlayer : public QWidget
 {
     Q_OBJECT
 public:

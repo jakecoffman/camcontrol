@@ -8,7 +8,7 @@
 
 #include <VLCQtCore/Common.h>
 
-#include "SimplePlayer.h"
+#include "PlayerContainer.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,8 +18,10 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     VlcCommon::setPluginPath(QApplication::applicationDirPath() + "/plugins");
 
-    SimplePlayer mainWindow;
+    PlayerContainer mainWindow;
     mainWindow.show();
+//    SimplePlayer mainWindow;
+//    mainWindow.show();
 
     return QApplication::exec();
 }
