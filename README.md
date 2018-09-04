@@ -1,6 +1,10 @@
 # camcontrol
 
-More info coming soon.
+I couldn't find an easy way to view multiple security cameras (Amcrest) and also control them, so I built this. 
+
+![screenshot](screenshot.png?raw=true "screenshot")
+
+## building
 
 This project was forked from: https://github.com/vlc-qt/examples/tree/master/simple-player
 
