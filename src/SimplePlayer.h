@@ -1,10 +1,3 @@
-#include <utility>
-
-/*
-* VLC-Qt Simple Player
-* Copyright (C) 2015 Tadej Novak <tadej@tano.si>
-*/
-
 #ifndef SIMPLEPLAYER_H_
 #define SIMPLEPLAYER_H_
 
@@ -32,9 +25,22 @@ public:
     void setUrl(QString);
     QString getUrl() { return _url; }
 
+protected:
+    void mouseDoubleClickEvent(QMouseEvent *e) override;
+
 private slots:
-    void openLocal();
     void openUrl();
+    void leftPressed();
+    void leftReleased();
+    void rightPressed();
+    void rightReleased();
+    void upPressed();
+    void upReleased();
+    void downPressed();
+    void downReleased();
+
+signals:
+    void toggleFull();
 
 private:
     Ui::SimplePlayer *ui;

@@ -1,8 +1,3 @@
-/*
-* VLC-Qt Simple Player
-* Copyright (C) 2015 Tadej Novak <tadej@tano.si>
-*/
-
 #include <QtCore/QCoreApplication>
 #include <QtWidgets/QApplication>
 
@@ -20,8 +15,6 @@ int main(int argc, char *argv[])
 
     PlayerContainer mainWindow;
     mainWindow.show();
-//    SimplePlayer mainWindow;
-//    mainWindow.show();
 
     return QApplication::exec();
 }

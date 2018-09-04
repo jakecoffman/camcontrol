@@ -1,5 +1,6 @@
 #include <QSettings>
 #include <QCloseEvent>
+#include <QDebug>
 #include "PlayerContainer.h"
 #include "ui_PlayerContainer.h"
 
@@ -9,6 +10,9 @@ PlayerContainer::PlayerContainer(QWidget *parent)
 {
     ui->setupUi(this);
     readSettings();
+
+    connect(ui->player0, &SimplePlayer::toggleFull, this, &PlayerContainer::handleFull0);
+    connect(ui->player1, &SimplePlayer::toggleFull, this, &PlayerContainer::handleFull1);
 }
 
 PlayerContainer::~PlayerContainer()
@@ -43,4 +47,20 @@ void PlayerContainer::writeSettings() {
     settings.setValue("url0", ui->player0->getUrl());
     settings.setValue("url1", ui->player1->getUrl());
     settings.endGroup();
+}
+
+void PlayerContainer::handleFull0() {
+    if (ui->player1->isHidden()) {
+        ui->player1->show();
+    } else {
+        ui->player1->hide();
+    }
+}
+
+void PlayerContainer::handleFull1() {
+    if (ui->player0->isHidden()) {
+        ui->player0->show();
+    } else {
+        ui->player0->hide();
+    }
 }

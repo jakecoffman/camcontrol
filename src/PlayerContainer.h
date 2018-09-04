@@ -16,9 +16,10 @@ public:
     explicit PlayerContainer(QWidget *parent = nullptr);
     ~PlayerContainer() override;
 
-//private slots:
-//    void openLocal();
-//    void openUrl();
+private slots:
+    void handleFull0();
+    void handleFull1();
+
 protected:
     void closeEvent(QCloseEvent *event) override;
 
@@ -28,9 +29,6 @@ private:
 
 private:
     Ui::PlayerContainer *ui;
-
-    SimplePlayer *_player0;
-    SimplePlayer *_player1;
 };
 
 

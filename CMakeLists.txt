@@ -59,6 +59,12 @@ FIND_PACKAGE(Qt5 5.2.0 REQUIRED COMPONENTS Widgets)
 # Add additional libraries
 FIND_PACKAGE(VLCQt REQUIRED COMPONENTS Widgets)
 
+set( CURL_LIBRARY ${CMAKE_SOURCE_DIR}/lib )
+set( CURL_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include )
+FIND_PACKAGE(CURL)
+include_directories( ${CURL_INCLUDE_DIRS} )
+link_directories( ${CURL_LIBRARIES} )
+
 # Set Qt bin dir to find QtCore*.dll and other libs to install
 STRING(REGEX REPLACE "([^ ]+)[/\\].*" "\\1" QT_BIN_DIR_TMP "${QT_MOC_EXECUTABLE}")
 STRING(REGEX REPLACE "\\\\" "/" QT_BIN_DIR "${QT_BIN_DIR_TMP}")  # Replace back slashes to slashes
