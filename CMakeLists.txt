@@ -97,13 +97,13 @@ ENDIF()
 
 # Set the OS X Bundle specific CMake variables which will be used to populate the plist for
 # the application bundle
-SET(MACOSX_BUNDLE_COPYRIGHT "2015 Tadej Novak")
+# SET(MACOSX_BUNDLE_COPYRIGHT "2015 Tadej Novak")
 SET(MACOSX_BUNDLE_ICON_FILE "${PROJECT_NAME}.icns")
 SET(MACOSX_BUNDLE_GUI_IDENTIFIER "si.tano.${PROJECT_NAME_LOWER}")
 
-SET(WINDOWS_AUTHOR "Tadej Novak")
-SET(WINDOWS_DESCRIPTION "A simple VLC-Qt example player")
-SET(WINDOWS_COPYRIGHT "Copyright (C) ${MACOSX_BUNDLE_COPYRIGHT}")
+# SET(WINDOWS_AUTHOR "Tadej Novak")
+SET(WINDOWS_DESCRIPTION "View and control multiple cameras")
+# SET(WINDOWS_COPYRIGHT "Copyright (C) ${MACOSX_BUNDLE_COPYRIGHT}")
 
 
 # Include source
